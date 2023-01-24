@@ -1,0 +1,8 @@
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/student/dao/StudentDao.java
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/student/model/Student.java
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/admin/model/User.java
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/admin/model/Admin.java
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/student/controller/StudentController.java
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/admin/controller/loginController.java
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/admin/dao/Admin_dao.java
+/home/tech-trail/eclipse-workspace/StudentManagement/src/main/java/StudentManagement/student/model/AddStudent.java
