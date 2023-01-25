@@ -27,7 +27,7 @@ public class StudentDao {
 	public List<Object[]> allInTable(){
 		System.out.println("in table");
 		con.addAnnotatedClass(Student.class);
-		con.configure("/Hibernate.cfg.xml");
+		con.configure();
 		System.out.println("out");
 		SessionFactory sessionFactory = con.buildSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -44,13 +44,14 @@ public class StudentDao {
 	//add student in database
 	public int addStudent(AddStudent addStudent, String userName) {
 		String s=String.valueOf(addStudent.getSid());
-		if(addStudent.getSname()==null || addStudent.getSdept()==null || s==null || userName==null)
+		if(addStudent.getSname()==null || addStudent.getSdept()==null || s==null || userName==null
+				|| addStudent.getSname()=="" || addStudent.getSdept()=="" || s=="" || userName=="")
 		{
 			return 0;
 		}
 		
 		con.addAnnotatedClass(Student.class);
-		con.configure("/Hibernate.cfg.xml");
+		con.configure();
 		SessionFactory sessionFactory = con.buildSessionFactory();
 		System.out.println("inside addstudent dao");
 		
@@ -102,12 +103,13 @@ public class StudentDao {
 	//update student details in database
 	public int updateStudent(AddStudent addStudent, String userName)
 	{ String s=String.valueOf(addStudent.getSid());
-		if(addStudent.getSname()==null || addStudent.getSdept()==null || s==null || userName==null)
+		if(addStudent.getSname()==null || addStudent.getSdept()==null || s==null || userName==null ||
+				addStudent.getSname()=="" || addStudent.getSdept()=="" || s=="" || userName=="")
 		{
 			return 0;
 		}
 		con.addAnnotatedClass(StudentManagement.student.model.Student.class);
-		con.configure("/Hibernate.cfg.xml");
+		con.configure();
 		SessionFactory sessionFactory = con.buildSessionFactory();
 
 		Session session = sessionFactory.openSession();
@@ -161,7 +163,7 @@ public class StudentDao {
 			return 0;
 		}
 		con.addAnnotatedClass(StudentManagement.student.model.Student.class);
-		con.configure("/Hibernate.cfg.xml");
+		con.configure();
 		SessionFactory sessionFactory = con.buildSessionFactory();
 
 		Session session = sessionFactory.openSession();

@@ -27,10 +27,31 @@ public class StudentController {
 	//add or update student model
 	@PostMapping(path = "/AddorUpdateStudent")
 	public String addOrUpadeteStudent(@ModelAttribute AddStudent addStudent, Model model) {
+		
+		
+		
+		
 		String un = lc.userName;
 		System.out.println(un);
 		String s = addStudent.getAddOrUpdate();
+		
+		//-----------For add student------------------
 		if (s.equals("add")) {
+			
+			
+			//validation for empty field
+			String s1=String.valueOf(addStudent.getSid());
+			
+			if(addStudent.getSname()=="" || addStudent.getSdept()=="" || s1=="" || un=="")
+			{
+				model.addAttribute("msg", "missed some important field");
+				model.addAttribute("addOrUpdate", "add");
+				model.addAttribute("addUpdate","Add Student");
+				return "addStudent";
+			}
+			//validation end
+			
+			
 			int check = Sdao.addStudent(addStudent, un);
 			if (check == 0) {
 				model.addAttribute("msg", "ID already present in database");
@@ -44,6 +65,20 @@ public class StudentController {
 			return "addStudent";
 		}
 
+		///-------------------for update student------------------
+		
+		//validation for empty field
+		String s1=String.valueOf(addStudent.getSid());
+		
+		if(addStudent.getSname()=="" || addStudent.getSdept()=="" || s1=="" || un=="")
+		{
+			model.addAttribute("msg", "missed some important field");
+			model.addAttribute("addOrUpdate", "update");
+			model.addAttribute("addUpdate","Update Student");
+			return "addStudent";
+		}
+		// validation end
+		
 		int check = Sdao.updateStudent(addStudent, un);
 		if (check == 0) {
 			model.addAttribute("msg", "Given ID not present in database first add student");
@@ -61,7 +96,16 @@ public class StudentController {
 	//delete student model
 	@PostMapping(path = "/deleteStudent")
 	public String deleteStudent(@RequestParam("sId") int sId,Model model)
-	{
+	{ //validation
+		String s=String.valueOf(sId);
+		if(s=="")
+		{
+			model.addAttribute("msg","missed field");
+			return "deleteStudent";
+		}
+		//validation end
+		
+		
 		int i=Sdao.deleteStudent(sId);
 		if(i<=0)
 		{model.addAttribute("msg","Given ID not prsent in database");

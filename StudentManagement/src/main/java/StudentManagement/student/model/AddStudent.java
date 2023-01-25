@@ -2,6 +2,9 @@ package StudentManagement.student.model;
 
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AddStudent {
 	@Size(min = 1, message = "Student name can't be empty")
 	private String Sname;

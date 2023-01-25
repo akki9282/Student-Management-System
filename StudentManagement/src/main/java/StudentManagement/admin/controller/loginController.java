@@ -2,9 +2,12 @@ package StudentManagement.admin.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +34,7 @@ public class loginController {
 		return "login";
 	}
 
-	//calling home page
+	// calling home page
 	@RequestMapping("/home")
 	public String home(Model model) {
 		List<Object[]> list1 = Sdao.allInTable();
@@ -41,11 +44,18 @@ public class loginController {
 		return "home";
 	}
 
-	//validating login page if loging details true then call home page
+	// validating login page if loging details true then call home page
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String loginPerform(@ModelAttribute User user, Model model) {
+
+	public String loginPerform(@ModelAttribute() User user, Model model) {
+
+		if (user.getUname() == "" || user.getPass() == "") {
+			model.addAttribute("msg", "You have missed some required field");
+			return "login";
+		}
+
 		int i = admin_dao.validate(user.getUname(), user.getPass());
-		if (i==0) {
+		if (i == 0) {
 			model.addAttribute("msg", "You have enterd wrong password and username");
 			return "login";
 		}
@@ -56,6 +66,5 @@ public class loginController {
 		userName = user.getUname();
 		return "home";
 
-		
 	}
 }

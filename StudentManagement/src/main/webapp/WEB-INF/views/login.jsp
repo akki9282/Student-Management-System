@@ -208,21 +208,19 @@ cursor:pointer;
 	<p>${msg }</p>
   <form action="login" method="post">
     <div class="user-box">
-      <input type="text" name="Uname" required="">
+<!--       <input type="text" name="Uname" required=""> -->
+
+       <input type="text" name="Uname">
       <label>Username/ID</label>
     </div>
     <div class="user-box">
-      <input type="password" name="pass" required="">
+<!--       <input type="password" name="pass" required=""> -->
+
+         <input type="password" name="pass">
       <label>Password</label>
     </div>
    <button type="submit">Login</button>
-<!--     <a href="#"> -->
-<!--       <span></span> -->
-<!--       <span></span> -->
-<!--       <span></span> -->
-<!--       <span></span> -->
-       
-<!--     </a> -->
+
   </form>
 </div>
 </body>

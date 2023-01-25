@@ -14,7 +14,7 @@ public class Admin_dao {
 
 	// admin details validate from getting data from database
 	public int validate(String userV, String passV) {
-		if(userV==null && passV==null)
+		if(userV==null || passV==null || userV=="" || passV=="")
 		{
 			return 0;
 		}
